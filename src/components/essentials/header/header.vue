@@ -1,4 +1,19 @@
 <script setup>
+import { useRouter, useRoute } from 'vue-router';
+
+// Récupère le routeur et la route actuelle
+const router = useRouter();
+const route = useRoute();
+
+// Navigation vers une route
+const navigateTo = (path) => {
+  router.push(path);
+};
+
+// Vérifie si une route est active
+const isActive = (path) => {
+  return route.path === path;
+};
 </script>
 
 <template>
@@ -7,8 +22,13 @@
       <h1 class="logo">Owl Viewer</h1>
 
       <nav class="nav">
-        <button class="nav-btn">Gallery</button>
-        <button class="nav-btn">Login</button>
+        <router-link to="/gallery" class="nav-btn" :class="{ active: isActive('/gallery') }">
+          Gallery
+        </router-link>
+        
+        <router-link  to="/login" class="nav-btn login-btn" :class="{ active: isActive('/login') }">
+          Login
+        </router-link>
       </nav>
     </div>
   </header>

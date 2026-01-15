@@ -1,18 +1,21 @@
 <script setup>
+  import { useRouter } from 'vue-router';
   import footerComponent from './components/essentials/footer/footer.vue';
   import headerComponent from './components/essentials/header/header.vue';
-  import homeComponent from './components/pages/home/home.vue';
+
+const router = useRouter();
 </script>
 
 <template>
-  <headerComponent />
-  
-  <main class="main-content">
-    <homeComponent />
-  </main>
-  
-  <footerComponent />
+    <headerComponent />
+    
+    <main class="main-content">
+      <router-view />
+    </main>
+    
+    <footerComponent />
 </template>
+
 
 <style scoped>
 

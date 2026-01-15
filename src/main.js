@@ -2,5 +2,9 @@ import './assets/main.css'
 
 import { createApp } from 'vue'
 import App from './App.vue'
+import router from './router.js'
 
-createApp(App).mount('#app')
+// Crée l'application Vue et ajoute le routeur
+createApp(App)
+  .use(router)
+  .mount('#app')
