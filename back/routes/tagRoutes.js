@@ -1,20 +1,27 @@
-const express = require("express");
+import express from "express";
+import {
+    createTag,
+    getAllTags,
+    getTagById,
+    updateTag,
+    deleteTag
+} from "../controllers/tagController.js";
+
 const router = express.Router();
-const tagController = require("../controllers/tagController");
 
 // CREATE
-router.post("/create", tagController.createTag);
+router.post("/create", createTag);
 
 // READ ALL
-router.get("/", tagController.getAllTags);
+router.get("/", getAllTags);
 
 // READ ONE
-router.get("/:id", tagController.getTagById);
+router.get("/:id", getTagById);
 
 // UPDATE
-router.put("/:id", tagController.updateTag);
+router.put("/:id", updateTag);
 
 // DELETE
-router.delete("/:id", tagController.deleteTag);
+router.delete("/:id", deleteTag);
 
-module.exports = router;
+export default router; // 🔑 export default pour ES Modules

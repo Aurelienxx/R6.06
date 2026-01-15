@@ -1,7 +1,7 @@
-const db = require("../db");
+import { db } from "../db.js";
 
 // CREATE TAG
-exports.createTag = (req, res) => {
+export const createTag = (req, res) => {
     const { tagName } = req.body;
     if (!tagName) return res.status(400).json({ message: "Nom du tag obligatoire" });
 
@@ -16,7 +16,7 @@ exports.createTag = (req, res) => {
 };
 
 // READ ALL TAGS
-exports.getAllTags = (req, res) => {
+export const getAllTags = (req, res) => {
     db.query("SELECT * FROM TagsTable", (err, result) => {
         if (err) return res.status(500).json(err);
         res.json(result);
@@ -24,7 +24,7 @@ exports.getAllTags = (req, res) => {
 };
 
 // READ SINGLE TAG
-exports.getTagById = (req, res) => {
+export const getTagById = (req, res) => {
     const tagID = req.params.id;
     db.query(
         "SELECT * FROM TagsTable WHERE tagID = ?",
@@ -38,7 +38,7 @@ exports.getTagById = (req, res) => {
 };
 
 // UPDATE TAG
-exports.updateTag = (req, res) => {
+export const updateTag = (req, res) => {
     const tagID = req.params.id;
     const { tagName } = req.body;
     if (!tagName) return res.status(400).json({ message: "Nom du tag obligatoire" });
@@ -46,7 +46,7 @@ exports.updateTag = (req, res) => {
     db.query(
         "UPDATE TagsTable SET tagName = ? WHERE tagID = ?",
         [tagName, tagID],
-        (err, result) => {
+        (err) => {
             if (err) return res.status(500).json(err);
             res.json({ message: "Tag mis à jour" });
         }
@@ -54,12 +54,12 @@ exports.updateTag = (req, res) => {
 };
 
 // DELETE TAG
-exports.deleteTag = (req, res) => {
+export const deleteTag = (req, res) => {
     const tagID = req.params.id;
     db.query(
         "DELETE FROM TagsTable WHERE tagID = ?",
         [tagID],
-        (err, result) => {
+        (err) => {
             if (err) return res.status(500).json(err);
             res.json({ message: "Tag supprimé" });
         }

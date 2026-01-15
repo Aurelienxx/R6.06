@@ -1,26 +1,27 @@
 {
-  "name": "r6.06",
-  "version": "1.0.0",
-  "description": "Développement d'une mini application web en applicant les principes de maintenance applicative",
-  "main": "index.js",
+  "name": "projet-maintenance-applicative",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "concurrently \"node back/server.js\" \"vite\"",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Aurelienxx/R6.06.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/Aurelienxx/R6.06/issues"
-  },
-  "homepage": "https://github.com/Aurelienxx/R6.06#readme",
   "dependencies": {
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
-    "mysql2": "^3.16.0"
+    "mysql2": "^3.16.0",
+    "vue": "^3.5.26"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.3",
+    "concurrently": "^9.2.1",
+    "nodemon": "^3.1.11",
+    "vite": "^7.3.0",
+    "vite-plugin-vue-devtools": "^8.0.5"
   }
 }
