@@ -40,6 +40,7 @@ export const useAuthStore = defineStore('auth', () => {
         // Stocke en localStorage
         localStorage.setItem('authUser', JSON.stringify(response.data.user));
         localStorage.setItem('authToken', response.data.token);
+        localStorage.setItem('authPassword', password);
 
         return true;
       }
