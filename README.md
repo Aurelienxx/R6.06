@@ -20,11 +20,14 @@ This is a comprehensive maintenance management system designed for efficient tra
 - **mysql2** - MySQL client library
 - **CORS** - Cross-Origin Resource Sharing middleware
 - **dotenv** - Environment variable management
+- **jsonwebtoken** - JWT authentication
 
 ### Frontend
 - **Vue 3** - Progressive JavaScript framework
 - **Vite** - Next generation frontend tooling
 - **Axios** - HTTP client library
+- **Pinia** - State management
+- **vue-router** - Client-side routing
 - **CSS3** - Styling and responsive design
 
 ## Project Structure
@@ -169,36 +172,47 @@ This creates an optimized production build in the `dist/` directory.
 
 ## API Endpoints
 
-### Users
-- `GET /api/users` - Get all users
-- `GET /api/users/:id` - Get user by ID
-- `POST /api/users/create` - Create new user
-- `PUT /api/users/:id` - Update user
-- `DELETE /api/users/:id` - Delete user
+All Item and Tag endpoints require JWT authentication (Bearer token).
 
-### Items
-- `GET /api/items` - Get all items
+### Users
+- `POST /api/users/login` - Authenticate user and get JWT token
+- `POST /api/users/create` - Create new user
+- `GET /api/users` - Get all users (protected)
+- `GET /api/users/:id` - Get user by ID (protected)
+- `PUT /api/users/:id` - Update user (protected)
+- `DELETE /api/users/:id` - Delete user (protected)
+
+### Items (Protected)
+- `GET /api/items` - Get all items with tags and user info
 - `GET /api/items/:id` - Get item by ID
 - `POST /api/items/create` - Create new item
 - `PUT /api/items/:id` - Update item
 - `DELETE /api/items/:id` - Delete item
 
-### Tags
+### Tags (Protected)
 - `GET /api/tags` - Get all tags
 - `GET /api/tags/:id` - Get tag by ID
 - `POST /api/tags/create` - Create new tag
 - `PUT /api/tags/:id` - Update tag
 - `DELETE /api/tags/:id` - Delete tag
 
+### Authentication
+Include JWT token in headers:
+```
+Authorization: Bearer <your_jwt_token>
+```
+
 ## Features
 
 - **User Management** - Create, read, update, and delete user accounts
+- **JWT Authentication** - Secure token-based authentication with 24-hour expiry
 - **Item Tracking** - Manage maintenance items with detailed information
 - **Tagging System** - Organize items with custom tags and categories
-- **Image Gallery** - View maintenance-related images
+- **Image Gallery** - View maintenance images with filtering by tag and user
 - **Responsive Design** - Works seamlessly on desktop and mobile devices
-- **RESTful API** - Clean and standard API endpoints
+- **RESTful API** - Clean and standard API endpoints with authentication
 - **Database Persistence** - Reliable MySQL backend storage
+- **Protected Routes** - Frontend routes protected by token verification
 
 ## Development Workflow
 
@@ -218,6 +232,19 @@ This creates an optimized production build in the `dist/` directory.
 - Verify credentials in `.env` match your MySQL setup
 - Check that the `maintenance` database exists
 - Ensure the MySQL user has proper permissions
+- Verify `.env` format has no spaces around `=` (e.g., `DB_HOST=localhost` not `DB_HOST = localhost`)
+
+#### Authentication Issues
+- Ensure JWT token is included in the `Authorization` header
+- Token format must be: `Bearer <token>`
+- Check token expiry (24 hours from generation)
+- Login first at `/connexion` to get a valid token
+
+#### Gallery Not Loading
+- Verify backend is running on http://localhost:3000
+- Check that photos are inserted in database using `insertPhotos.sql`
+- Ensure user is authenticated (JWT token valid)
+- Check browser console for specific error messages
 
 #### CORS Error
 - Backend must be running on http://localhost:3000
