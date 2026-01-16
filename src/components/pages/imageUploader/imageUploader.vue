@@ -140,7 +140,6 @@ const resetForm = () => {
           </select>
         </div>
 
-        <!-- Buttons -->
         <div class="button-group">
           <button
             type="submit"
@@ -175,20 +174,21 @@ const resetForm = () => {
 
 <style scoped>
 .upload-container {
+  margin: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
   padding: 20px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, rgb(134, 120, 120) 0%, rgb(74, 49, 54) 100%);
+  border-radius: 25px;
 }
 
 .upload-card {
   background: white;
   border-radius: 12px;
   padding: 40px;
-  max-width: 500px;
-  width: 100%;
+  width: 550px;
+  min-width: 300px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
 }
 
@@ -323,7 +323,7 @@ const resetForm = () => {
 }
 
 .upload-btn {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, rgb(134, 120, 120) 0%, rgb(74, 49, 54) 100%);
   color: white;
 }
 
@@ -353,7 +353,7 @@ const resetForm = () => {
 
 .info-box {
   background-color: #f0f4ff;
-  border-left: 4px solid #667eea;
+  border-left: 4px solid rgb(74, 49, 54);
   padding: 15px;
   border-radius: 4px;
   margin-top: 20px;
