@@ -1,16 +1,16 @@
 <script setup>
 import { useRouter, useRoute } from 'vue-router';
 
-// Récupère le routeur et la route actuelle
+// get the router and the current path
 const router = useRouter();
 const route = useRoute();
 
-// Navigation vers une route
+// Navigates to the path
 const navigateTo = (path) => {
   router.push(path);
 };
 
-// Vérifie si une route est active
+// CHecks if the path is active
 const isActive = (path) => {
   return route.path === path;
 };

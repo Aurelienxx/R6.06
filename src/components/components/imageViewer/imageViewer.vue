@@ -24,7 +24,7 @@ onBeforeUnmount(() => {
 
 <template>
     <div class="image-viewer">
-        <img :src="images[currentIndex]" alt="owl" />
+        <img :src="images[currentIndex]" alt="owl photo" />
     </div>
 </template>
 
@@ -45,5 +45,10 @@ onBeforeUnmount(() => {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.image-viewer img:hover {
+    transform: scale(1.20); 
 }
 </style>

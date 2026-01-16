@@ -13,10 +13,6 @@
 .footer {
   width: 100%;
 
-  position: fixed;
-  bottom: 0;
-  left: 0;
-
   padding: 20px 0;
 
   background: rgb(92, 83, 83);

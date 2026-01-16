@@ -4,7 +4,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from './components/pages/home/home.vue'
 import LoginView from './components/pages/login/login.vue'
 import GalleryView from './components/pages/gallery/gallery.vue'
-import UploadView from './components/components/upload/imageUpload.vue'
+import imageUploader from './components/pages/imageUploader/imageUploader.vue'
 
 // Définition des routes de l'application
 const routes = [
@@ -22,7 +22,7 @@ const routes = [
   },
   {
     path: '/upload',
-    component: UploadView,
+    component: imageUploader,
   }
 ]
 
