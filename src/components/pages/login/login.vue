@@ -16,23 +16,24 @@ const router = useRouter();
 // Handle login
 const handleLogin = async () => {
   if (!username.value || !password.value) {
-    alert('Veuillez remplir tous les champs');
+    alert('Every field must be filled');
     return;
   }
 
   const success = await authStore.login(username.value, password.value);
   
   if (success) {
-    // Affiche le message de succès
+    // Shows a succes message 
     successMessage.value = true;
     
-    // Redirige après 2 secondes
-    setTimeout(() => {
-      router.push('/');
-    }, 2000);
-  } else {
-    alert('Erreur: ' + authStore.error);
-  }
+    // if successful redirect after 2 seconds 
+    if (successMessage === true) {
+      setTimeout(() => {
+        router.push('/');
+      }, 2000);
+    } else {
+      alert('Error: ' + authStore.error);
+    }
 };
 
 // Toggle password visibility
@@ -43,10 +44,8 @@ const togglePasswordVisibility = () => {
 
 <template>
   <div class="login-container">
-    <!-- Message de succès -->
     <div v-if="successMessage" class="success-message">
-      <p>✓ Connecté avec succès!</p>
-      <p>Redirection en cours...</p>
+      <p>✓ Login successful!</p>
     </div>
 
     <!-- Card de login -->
